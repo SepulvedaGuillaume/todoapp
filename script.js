@@ -22,17 +22,17 @@ const selectTodos = document.querySelector(".todos");
 const renderTodos = () => {
   selectTodos.innerHTML = `<ul>${todos
     .map(
-      (todo, index) =>
+      ({content, resolved}, index) =>
         `<div id=${index}>
           <input type="text" id="content_${index}" name="todo" value="${
-          todo.content
+          content
         }" disabled>
             <select id="status_${index}" disabled>
               <option value="true" ${
-                todo.resolved ? "selected" : ""
+                resolved ? "selected" : ""
               }>Résolu</option>
               <option value="false" ${
-                !todo.resolved ? "selected" : ""
+                !resolved ? "selected" : ""
               }>Non résolu</option>
             </select>
             <button class="delete_todo" onclick="deleteTodo(${index})">X</button>
